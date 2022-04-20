@@ -16,6 +16,8 @@ public:
 	}
 	void		Set_Dir(DIRECTION eDir) { m_eDir = eDir; }
 
+	RECT		Get_Rect() { return m_tRect; }
+
 public:
 	virtual		void		Initialize(void)	PURE;
 	virtual		int			Update(void)		PURE;
@@ -25,6 +27,8 @@ public:
 
 public:
 	void			Update_Rect(void);
+
+	virtual	void	OnCollision() {};
 
 protected:
 	INFO		m_tInfo;

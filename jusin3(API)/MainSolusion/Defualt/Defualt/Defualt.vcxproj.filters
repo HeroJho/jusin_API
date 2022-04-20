@@ -34,6 +34,9 @@
     <Filter Include="98. Design\AbstractFactory">
       <UniqueIdentifier>{8b832f95-1448-4965-b498-9723c97bd508}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Obj\Monster">
+      <UniqueIdentifier>{2dfabcde-9dea-4c28-b31f-6321e245cb9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -81,6 +84,9 @@
     <ClInclude Include="CAbstractFactory.h">
       <Filter>98. Design\AbstractFactory</Filter>
     </ClInclude>
+    <ClInclude Include="CMonster.h">
+      <Filter>01.Obj\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Defualt.cpp">
@@ -100,6 +106,9 @@
     </ClCompile>
     <ClCompile Include="CMainGame.cpp">
       <Filter>00. MainGame</Filter>
+    </ClCompile>
+    <ClCompile Include="CMonster.cpp">
+      <Filter>01.Obj\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

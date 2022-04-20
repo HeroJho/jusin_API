@@ -63,3 +63,8 @@ void CBullet::Release(void)
 {
 
 }
+
+void CBullet::OnCollision()
+{
+	m_bDead = true;
+}

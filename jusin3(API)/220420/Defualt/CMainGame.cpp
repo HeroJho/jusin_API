@@ -2,10 +2,10 @@
 #include "CMainGame.h"
 #include "CAbstractFactory.h"
 
-
 CMainGame::CMainGame()
 	: m_hDc(nullptr)
 	, m_dwTime(GetTickCount())
+	, m_rcWall{ 100, 100, WINCX - 100, WINCY - 100 }
 {
 	ZeroMemory(m_szFPS, sizeof(TCHAR) * 64);
 	m_iFPS = 0;
@@ -24,11 +24,14 @@ void CMainGame::Initialize(void)
 
 	// 추상 펙토리 패턴을 사용해서 Player 생성.
 	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
+	m_ObjList[OBJ_MONSTER].push_back(CAbstractFactory<CMonster>::Create());
 
 	// 만든 Player한테 Main의 총알 리스트를 넘겨준다.
 	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_BulletList(&m_ObjList[OBJ_BULLET]);
 	
 }
+
+
 
 void CMainGame::Update(void)
 {
@@ -57,13 +60,32 @@ void CMainGame::Late_Update(void)
 		for (auto& iter : m_ObjList[i])
 			iter->Late_Update();
 	}
+
+	// 몬스터 총알 충돌처리
+	for (auto& Monster : m_ObjList[OBJ_MONSTER])
+	{
+		for (auto& Bullet : m_ObjList[OBJ_BULLET])
+		{
+			RECT tempRect;
+			RECT tempR1 = Monster->Get_Rect();
+			RECT tempR2 = Bullet->Get_Rect();
+			// 충돌 됐다
+			if (IntersectRect(&tempRect, &tempR1, &tempR2))
+			{
+				Monster->OnCollision();
+				Bullet->OnCollision();
+			}
+
+		}
+	}
+		
 }
 
 void CMainGame::Render(void)
 {
 	// 큰 네모를 그려서 이전 프레임 그림을 덮어준다.
 	Rectangle(m_hDc, 0, 0, WINCX, WINCY);
-	Rectangle(m_hDc, 100, 100, WINCX - 100, WINCY - 100);
+	Rectangle(m_hDc, m_rcWall.left, m_rcWall.top, m_rcWall.right, m_rcWall.bottom);
 
 	for (int i = 0; i < OBJ_END; ++i)
 	{
