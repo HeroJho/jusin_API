@@ -2,6 +2,8 @@
 #include "CPlayer.h"
 #include "CAbstractFactory.h"
 
+#include "CScrewBullet.h"
+
 CPlayer::CPlayer()
 	: m_Theta(0.f)
 {
@@ -64,10 +66,10 @@ void CPlayer::Key_Input(void)
 {
 
 	if (GetAsyncKeyState(VK_LEFT))
-		m_fAngle -= 5.f;
+		m_fAngle += 5.f;
 
 	if (GetAsyncKeyState(VK_RIGHT))
-		m_fAngle += 5.f;
+		m_fAngle -= 5.f;
 
 	if (GetAsyncKeyState(VK_UP))
 	{
@@ -82,7 +84,12 @@ void CPlayer::Key_Input(void)
 	}
 
 	if (GetAsyncKeyState(VK_SPACE))
-		m_pBullet->push_back(CAbstractFactory<CBullet>::Create((float)m_tPosin.x, (float)m_tPosin.y, m_fAngle));
+	{
+		CObj* s = CAbstractFactory<CScrewBullet>::Create(0.f, 0.f, m_fAngle);
+		((CScrewBullet*)s)->SetCenter((float)m_tInfo.fX, (float)m_tInfo.fY);
+		m_pBullet->push_back(s);
+	}
+		
 }
 
 
@@ -97,3 +104,6 @@ CObj* CPlayer::Create_Bullet(DIRECTION eDir)
 
 	return pBullet;
 }
+
+
+

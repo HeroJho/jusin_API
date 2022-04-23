@@ -21,8 +21,8 @@ void CollisionMgr::Collision_Rect(list<CObj*> _Dest, list<CObj*> _Sour)
 		{
 			if (IntersectRect(&rc, &(Dest->Get_Rect()), &(Sour->Get_Rect())))
 			{
-				Dest->Set_Dead();
-				Sour->Set_Dead();
+				Dest->OnCollision();
+				Sour->OnCollision();
 			}
 		}
 	}
@@ -49,8 +49,8 @@ void CollisionMgr::Collision_Sphere(list<CObj*> _Dest, list<CObj*> _Sour)
 		{
 			if (Check_Sphere(Dest, Sour))
 			{
-				Dest->Set_Dead();
-				Sour->Set_Dead();
+				Dest->OnCollision();
+				Sour->OnCollision();
 			}
 		}
 	}

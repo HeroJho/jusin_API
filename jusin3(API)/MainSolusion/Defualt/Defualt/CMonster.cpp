@@ -3,6 +3,7 @@
 
 
 CMonster::CMonster()
+	: m_pTarget(nullptr)
 {
 }
 
@@ -29,18 +30,9 @@ int CMonster::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-
-	switch (m_eDir)
-	{
-	case DIR_LEFT:
-		m_tInfo.fX -= m_fSpeed;
-		break;
-	case DIR_RIGHT:
-		m_tInfo.fX += m_fSpeed;
-		break;
-	}
+	m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
+	m_tInfo.fY -= m_fSpeed * sinf(m_fAngle);
 	
-
 	Update_Rect();
 
 	return OBJ_NOEVENT;
@@ -48,12 +40,14 @@ int CMonster::Update(void)
 
 void CMonster::Late_Update(void)
 {
-	// ¿Þ ¿À º®¿¡ ´ê¾Ò³Ä
-	if (100 >= m_tRect.left)
-		m_eDir = DIR_RIGHT;
-	else if (WINCX - 100 <= m_tRect.right)
-		m_eDir = DIR_LEFT;	
+	double dX = m_pTarget->Get_Info().fX - m_tInfo.fX;
+	double dY = m_pTarget->Get_Info().fY - m_tInfo.fY;
 
+	if (dX == 0.f && dY == 0.f)
+		return;
+
+	float dis = sqrt((dX * dX) + (dY * dY));
+	m_fAngle = acosf(dX / dis);
 }
 
 void CMonster::Render(HDC hDC)

@@ -40,6 +40,12 @@
     <Filter Include="98. Design\CollisionMgr">
       <UniqueIdentifier>{8879a56c-6748-476c-bc34-6e9fe9415328}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Obj\Shield">
+      <UniqueIdentifier>{14788d6a-3ff6-498a-b9a4-9c5c4a0a8c68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01.Obj\ScrewMissile">
+      <UniqueIdentifier>{a4d03b02-a60e-4949-a5cf-6444b1f911c7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +99,12 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>98. Design\CollisionMgr</Filter>
     </ClInclude>
+    <ClInclude Include="CShield.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CScrewBullet.h">
+      <Filter>01.Obj\ScrewMissile</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Defualt.cpp">
@@ -118,6 +130,12 @@
     </ClCompile>
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>98. Design\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="CShield.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CScrewBullet.cpp">
+      <Filter>01.Obj\ScrewMissile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

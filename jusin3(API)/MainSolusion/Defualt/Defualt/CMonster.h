@@ -11,6 +11,10 @@ public:
 
 
 public:
+	void SetTarget(CObj* _pTarget) { m_pTarget = _pTarget; }
+
+
+public:
 	virtual void	Initialize(void)	override;
 	virtual int		Update(void)		override;
 	virtual	void	Late_Update(void)	override;
@@ -19,6 +23,9 @@ public:
 
 public:
 	virtual void OnCollision();
+
+private:
+	CObj* m_pTarget;
 
 };
 

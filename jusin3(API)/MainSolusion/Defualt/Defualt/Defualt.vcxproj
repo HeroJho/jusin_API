@@ -151,6 +151,8 @@
     <ClInclude Include="CObj.h" />
     <ClInclude Include="CollisionMgr.h" />
     <ClInclude Include="CPlayer.h" />
+    <ClInclude Include="CScrewBullet.h" />
+    <ClInclude Include="CShield.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Defualt.h" />
     <ClInclude Include="Enum.h" />
@@ -169,6 +171,8 @@
     <ClCompile Include="CObj.cpp" />
     <ClCompile Include="CollisionMgr.cpp" />
     <ClCompile Include="CPlayer.cpp" />
+    <ClCompile Include="CScrewBullet.cpp" />
+    <ClCompile Include="CShield.cpp" />
     <ClCompile Include="Defualt.cpp" />
     <ClCompile Include="CMainGame.cpp" />
     <ClCompile Include="pch.cpp">
