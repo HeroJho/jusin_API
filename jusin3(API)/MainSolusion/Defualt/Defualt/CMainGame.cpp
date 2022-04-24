@@ -21,6 +21,7 @@ CMainGame::~CMainGame()
 
 void CMainGame::Initialize(void)
 {
+
 	// main에 있는 hWnd ID 값을 얻어온다
 	m_hDc = GetDC(g_hWnd);
 
@@ -41,9 +42,9 @@ void CMainGame::Initialize(void)
 }
 
 
-
 void CMainGame::Update(void)
 {
+
 	for (int i = 0; i < OBJ_END; ++i)
 	{
 		for (auto iter = m_ObjList[i].begin();
@@ -60,6 +61,7 @@ void CMainGame::Update(void)
 				++iter;
 		}
 	}
+
 }
 
 void CMainGame::Late_Update(void)
@@ -75,6 +77,7 @@ void CMainGame::Late_Update(void)
 
 void CMainGame::Render(void)
 {
+
 	// 큰 네모를 그려서 이전 프레임 그림을 덮어준다.
 	Rectangle(m_hDc, 0, 0, WINCX, WINCY);
 	Rectangle(m_hDc, m_rcWall.left, m_rcWall.top, m_rcWall.right, m_rcWall.bottom);
@@ -116,6 +119,7 @@ void CMainGame::Render(void)
 		m_iFPS = 0;
 		m_dwTime = GetTickCount();
 	}
+
 }
 
 void CMainGame::Release(void)

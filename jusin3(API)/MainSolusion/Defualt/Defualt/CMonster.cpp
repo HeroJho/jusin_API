@@ -30,9 +30,19 @@ int CMonster::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
-	m_tInfo.fY -= m_fSpeed * sinf(m_fAngle);
-	
+	double dY = m_pTarget->Get_Info().fY - m_tInfo.fY;
+
+	if (0.f < dY)
+	{
+		m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
+		m_tInfo.fY += m_fSpeed * sinf(m_fAngle);
+	}
+	else
+	{
+		m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
+		m_tInfo.fY += -m_fSpeed * sinf(m_fAngle);
+	}
+
 	Update_Rect();
 
 	return OBJ_NOEVENT;
@@ -43,11 +53,15 @@ void CMonster::Late_Update(void)
 	double dX = m_pTarget->Get_Info().fX - m_tInfo.fX;
 	double dY = m_pTarget->Get_Info().fY - m_tInfo.fY;
 
-	if (dX == 0.f && dY == 0.f)
-		return;
+	// double dX = m_tInfo.fX - m_pTarget->Get_Info().fX;
+	// double dY = m_tInfo.fY - m_pTarget->Get_Info().fY;
 
 	float dis = sqrt((dX * dX) + (dY * dY));
-	m_fAngle = acosf(dX / dis);
+	float temp = dX / dis;
+	if (-1.f <= temp && 1.f >= temp)
+	{
+		m_fAngle = acosf(dX / dis);
+	}
 }
 
 void CMonster::Render(HDC hDC)
