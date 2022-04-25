@@ -53,15 +53,8 @@ void CMonster::Late_Update(void)
 	double dX = m_pTarget->Get_Info().fX - m_tInfo.fX;
 	double dY = m_pTarget->Get_Info().fY - m_tInfo.fY;
 
-	// double dX = m_tInfo.fX - m_pTarget->Get_Info().fX;
-	// double dY = m_tInfo.fY - m_pTarget->Get_Info().fY;
-
 	float dis = sqrt((dX * dX) + (dY * dY));
-	float temp = dX / dis;
-	if (-1.f <= temp && 1.f >= temp)
-	{
-		m_fAngle = acosf(dX / dis);
-	}
+    m_fAngle = acosf(dX / dis);
 }
 
 void CMonster::Render(HDC hDC)
@@ -78,3 +71,6 @@ void CMonster::OnCollision()
 {
 	m_bDead = true;
 }
+
+
+// 내일 감상평 마이크 사용

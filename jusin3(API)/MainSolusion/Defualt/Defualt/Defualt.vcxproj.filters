@@ -46,6 +46,9 @@
     <Filter Include="01.Obj\ScrewMissile">
       <UniqueIdentifier>{a4d03b02-a60e-4949-a5cf-6444b1f911c7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01.Obj\Mouse">
+      <UniqueIdentifier>{23a2580d-2228-46d6-9a27-e1ef400a2e3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -99,11 +102,17 @@
     <ClInclude Include="CollisionMgr.h">
       <Filter>98. Design\CollisionMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CShield.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CScrewBullet.h">
       <Filter>01.Obj\ScrewMissile</Filter>
+    </ClInclude>
+    <ClInclude Include="CShield.h">
+      <Filter>01.Obj\Shield</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>01.Obj\Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>99. Header</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,11 +140,17 @@
     <ClCompile Include="CollisionMgr.cpp">
       <Filter>98. Design\CollisionMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CShield.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CScrewBullet.cpp">
       <Filter>01.Obj\ScrewMissile</Filter>
+    </ClCompile>
+    <ClCompile Include="CShield.cpp">
+      <Filter>01.Obj\Shield</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>01.Obj\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="Function.cpp">
+      <Filter>99. Header</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

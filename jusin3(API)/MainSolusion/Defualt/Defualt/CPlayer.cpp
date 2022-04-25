@@ -88,7 +88,7 @@ void CPlayer::Key_Input(void)
 		CObj* s = CAbstractFactory<CScrewBullet>::Create(0.f, 0.f, m_fAngle);
 		((CScrewBullet*)s)->SetCenter((float)m_tInfo.fX, (float)m_tInfo.fY);
 		m_pBullet->push_back(s);
-	}
+ 	}
 		
 }
 
@@ -99,6 +99,8 @@ CObj* CPlayer::Create_Bullet(DIRECTION eDir)
 	pBullet->Set_Pos(m_tInfo.fX, m_tInfo.fY);
 	pBullet->Initialize();
 	pBullet->Set_Dir(eDir);*/
+
+
 
 	CObj* pBullet = CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, eDir);
 

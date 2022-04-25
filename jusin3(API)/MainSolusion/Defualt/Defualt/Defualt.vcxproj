@@ -157,9 +157,11 @@
     <ClInclude Include="Defualt.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Function.h" />
     <ClInclude Include="Functor.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="CMainGame.h" />
+    <ClInclude Include="Mouse.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Struct.h" />
@@ -175,6 +177,8 @@
     <ClCompile Include="CShield.cpp" />
     <ClCompile Include="Defualt.cpp" />
     <ClCompile Include="CMainGame.cpp" />
+    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

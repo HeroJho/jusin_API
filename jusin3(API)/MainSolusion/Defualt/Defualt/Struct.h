@@ -8,3 +8,5 @@ typedef struct tagInfo
 	float		fCY;
 
 }INFO;
+
+

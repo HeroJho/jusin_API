@@ -4,6 +4,7 @@
 #include "CAbstractFactory.h"
 #include "CollisionMgr.h"
 #include "CShield.h"
+#include "Mouse.h"
 
 CMainGame::CMainGame()
 	: m_hDc(nullptr)
@@ -39,6 +40,7 @@ void CMainGame::Initialize(void)
 	//((CShield*)obj)->SetOwner(m_ObjList[OBJ_PLAYER].front());
 	//m_ObjList[OBJ_BULLET].push_back(obj);
 
+	m_ObjList[OBJ_MOUSE].push_back(CAbstractFactory<CMouse>::Create());
 }
 
 
