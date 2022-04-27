@@ -1,29 +1,28 @@
 #pragma once
+
 #include "CObj.h"
-class CScrewBullet :
-    public CObj
+class CScrewBullet : public CObj
 {
 public:
 	CScrewBullet();
 	virtual ~CScrewBullet();
 
 public:
-	void SetCenter(float _fX, float _fY) { m_tCenter.x = _fX; m_tCenter.y = _fY; }
-	virtual void OnCollision();
-
-public:
-	virtual void	Initialize(void)	override;
-	virtual int		Update(void)		override;
-	virtual	void	Late_Update(void)	override;
-	virtual void	Render(HDC hDC)		override;
-	virtual void	Release(void)		override;
+	virtual void Initialize(void) override;
+	virtual int Update(void) override;
+	virtual void Late_Update(void) override;
+	virtual void Render(HDC hDC) override;
+	virtual void Release(void) override;
 
 
 private:
-	POINT					m_tCenter;
-	float					m_fDiagonal;
-	float					m_satTheta;
+	POINT		m_ptCenter;
 
+	float		m_fRotAngle;
+	float		m_fRotSpeed;
+	float		m_fRotDistance;
+
+	bool		m_bStart;	// 중심 축에 대한 적용은 1회만 적용 후 진행 방향대로 함께 이동하도록 설계 해야 함.
 
 };
 

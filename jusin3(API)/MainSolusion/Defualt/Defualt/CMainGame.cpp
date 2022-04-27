@@ -29,6 +29,7 @@ void CMainGame::Initialize(void)
 	// 추상 펙토리 패턴을 사용해서 Player 생성.
 	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
 	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_BulletList(&m_ObjList[OBJ_BULLET]);
+	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_ShieldList(&m_ObjList[OBJ_SHIELD]);
 
 	// 몬스터 생성
 	CObj* pMonster = CAbstractFactory<CMonster>::Create();

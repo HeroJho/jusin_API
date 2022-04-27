@@ -2,6 +2,7 @@
 #include "CPlayer.h"
 #include "CAbstractFactory.h"
 
+#include "CShield.h"
 #include "CScrewBullet.h"
 
 CPlayer::CPlayer()
@@ -84,28 +85,26 @@ void CPlayer::Key_Input(void)
 	}
 
 	if (GetAsyncKeyState(VK_SPACE))
-	{
-		CObj* s = CAbstractFactory<CScrewBullet>::Create(0.f, 0.f, m_fAngle);
-		((CScrewBullet*)s)->SetCenter((float)m_tInfo.fX, (float)m_tInfo.fY);
-		m_pBullet->push_back(s);
- 	}
+		m_pBullet->push_back(Create_Bullet<CScrewBullet>());
 		
+	if (GetAsyncKeyState('D'))
+		m_pShield->push_back(Create_Shield());
+
 }
 
 
-CObj* CPlayer::Create_Bullet(DIRECTION eDir)
+template<typename T>
+CObj* CPlayer::Create_Bullet(void)
 {
-	/*CObj*		pBullet = new CBullet;
-	pBullet->Set_Pos(m_tInfo.fX, m_tInfo.fY);
-	pBullet->Initialize();
-	pBullet->Set_Dir(eDir);*/
-
-
-
-	CObj* pBullet = CAbstractFactory<CBullet>::Create(m_tInfo.fX, m_tInfo.fY, eDir);
+	CObj* pBullet = CAbstractFactory<T>::Create((float)m_tPosin.x, (float)m_tPosin.y, m_fAngle);
 
 	return pBullet;
 }
 
+CObj* CPlayer::Create_Shield(void)
+{
+	CObj* pShield = CAbstractFactory<CShield>::Create();
+	pShield->Set_Target(this);
 
-
+	return pShield;
+}

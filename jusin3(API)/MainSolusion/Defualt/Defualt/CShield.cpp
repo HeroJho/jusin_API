@@ -6,6 +6,7 @@ CShield::CShield()
 {
 }
 
+
 CShield::~CShield()
 {
 	Release();
@@ -13,11 +14,11 @@ CShield::~CShield()
 
 void CShield::Initialize(void)
 {
-	m_tInfo.fCX = 30.f;
-	m_tInfo.fCY = 30.f;
+	m_tInfo.fCX = 40.f;
+	m_tInfo.fCY = 40.f;
 
-	m_fDiagonal = 100.f;
-	m_fSpeed = .5f;
+	m_fSpeed = 5.f;		// 공전 속도
+	m_fDistance = 100.f;
 }
 
 int CShield::Update(void)
@@ -25,15 +26,11 @@ int CShield::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-	INFO sInfo = m_pOwner->Get_Info();
 
 	m_fAngle += m_fSpeed;
 
-	sInfo.fX += m_fDiagonal * cosf((m_fAngle * PI) / 180.f);
-	sInfo.fY -= m_fDiagonal * sinf((m_fAngle * PI) / 180.f);
-
-	m_tInfo.fX = sInfo.fX;
-	m_tInfo.fY = sInfo.fY;
+	m_tInfo.fX = m_pTarget->Get_Info().fX + m_fDistance * cosf((m_fAngle * PI) / 180.f);
+	m_tInfo.fY = m_pTarget->Get_Info().fY - m_fDistance * sinf((m_fAngle * PI) / 180.f);
 
 	Update_Rect();
 
@@ -42,22 +39,16 @@ int CShield::Update(void)
 
 void CShield::Late_Update(void)
 {
-	if (100 >= m_tRect.left || WINCX - 100 <= m_tRect.right ||
-		100 >= m_tRect.top || WINCY - 100 <= m_tRect.bottom)
-		m_bDead = true;
+	// 쿨타임 종료, 쉴드와 무언가가 충돌했을 때
+	// 개수 제한
 }
 
 void CShield::Render(HDC hDC)
 {
-	Rectangle(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
+	Ellipse(hDC, m_tRect.left, m_tRect.top, m_tRect.right, m_tRect.bottom);
 }
 
 void CShield::Release(void)
 {
 
-}
-
-void CShield::OnCollision()
-{
-	
 }

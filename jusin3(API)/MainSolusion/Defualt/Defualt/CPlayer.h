@@ -15,6 +15,7 @@ public:
 	{
 		m_pBullet = pBullet;
 	}
+	void	Set_ShieldList(list<CObj*>* pShield) { m_pShield = pShield; }
 
 public:
 	virtual void	Initialize(void)	override;
@@ -25,12 +26,18 @@ public:
 
 private:
 	void		Key_Input(void);
-	CObj*		Create_Bullet(DIRECTION eDir);
+
+	CObj* Create_Shield(void);
+
+	template<typename T>
+	CObj*       Create_Bullet(void);
 
 private:
 	typedef list<CObj*>		BULLETLIST;
 	BULLETLIST* m_pBullet;
 	float m_Theta;
+
+	list<CObj*>* m_pShield;
 
 	POINT					m_tPosin;
 	float					m_fDiagonal;
