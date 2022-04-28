@@ -19,6 +19,11 @@ public:
 	void		Set_Angle(float _fAngle) { m_fAngle = _fAngle; }
 	void		Set_Target(CObj* _pTarget) { m_pTarget = _pTarget; }
 
+	void		Set_PosX(float _fX) { m_tInfo.fX += _fX; }
+	void		Set_PosY(float _fY) { m_tInfo.fY += _fY; }
+
+	bool		Get_Dead() { return m_bDead; }
+
 	const INFO& Get_Info(void) const { return m_tInfo; }
 	const RECT& Get_Rect(void) const { return m_tRect; }
 

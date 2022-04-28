@@ -41,5 +41,7 @@ private:
 
 	POINT					m_tPosin;
 	float					m_fDiagonal;
+	float					m_velX;
+	float					m_velY;
 };
 

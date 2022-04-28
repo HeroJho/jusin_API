@@ -30,7 +30,6 @@ int CMonster::Update(void)
 	if (m_bDead)
 		return OBJ_DEAD;
 
-
 	double dX = m_pTarget->Get_Info().fX - m_tInfo.fX;
 	double dY = m_pTarget->Get_Info().fY - m_tInfo.fY;
 
@@ -43,8 +42,8 @@ int CMonster::Update(void)
 		m_fAngle *= -1.f;
 
 	// 윈도우 좌표계이기때문에 y는 빼준다.
-	m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
-	m_tInfo.fY -= m_fSpeed * sinf(m_fAngle);
+	//m_tInfo.fX += m_fSpeed * cosf(m_fAngle);
+	//m_tInfo.fY -= m_fSpeed * sinf(m_fAngle);
 	
 
 	Update_Rect();

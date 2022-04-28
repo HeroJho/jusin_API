@@ -7,6 +7,8 @@
 
 CPlayer::CPlayer()
 	: m_Theta(0.f)
+	, m_velX(0)
+	, m_velY(0)
 {
 }
 
@@ -76,20 +78,36 @@ void CPlayer::Key_Input(void)
 	{
 		m_tInfo.fX += m_fSpeed * cosf((m_fAngle * PI) / 180.f);
 		m_tInfo.fY -= m_fSpeed * sinf((m_fAngle * PI) / 180.f);
+
 	}
 
 	if (GetAsyncKeyState(VK_DOWN))
 	{
-		m_tInfo.fX += -m_fSpeed * cosf((m_fAngle * PI) / 180.f);
-		m_tInfo.fY -= -m_fSpeed * sinf((m_fAngle * PI) / 180.f);
+		m_velX += -m_fSpeed * cosf((m_fAngle * PI) / 180.f);
+		m_velY -= -m_fSpeed * sinf((m_fAngle * PI) / 180.f);
 	}
 
 	if (GetAsyncKeyState(VK_SPACE))
-		m_pBullet->push_back(Create_Bullet<CScrewBullet>());
-		
+	{
+		//m_velX += 50.f * cosf((m_fAngle * PI) / 180.f);
+		//m_velY -= 50.f * sinf((m_fAngle * PI) / 180.f);
+	}
+	
 	if (GetAsyncKeyState('D'))
 		m_pShield->push_back(Create_Shield());
 
+
+	//m_tInfo.fX += m_velX;
+	//m_tInfo.fY += m_velY;
+
+	//if (500.f > m_tInfo.fY)
+	//{
+	//	m_velY += 9.8 / 60.f;
+	//}
+	//else
+	//{
+	//	m_velY = 0.f;
+	//}
 }
 
 

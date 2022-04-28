@@ -1,18 +1,3 @@
-﻿  CBullet.cpp
-  CMonster.cpp
-C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CMonster.cpp(38,12): warning C4244: '초기화 중': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CMonster.cpp(39,22): warning C4244: '인수': 'double'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CObj.cpp
-  CollisionMgr.cpp
-  CPlayer.cpp
-C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CPlayer.cpp(54,35): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CPlayer.cpp(54,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-  CScrewBullet.cpp
-  CShield.cpp
-  Defualt.cpp
+﻿  CMainGame.cpp
 C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CMainGame.h(5,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
-  CMainGame.cpp
-C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Defualt\CMainGame.h(5,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
-  Mouse.cpp
-  코드를 생성하고 있습니다...
   Defualt.vcxproj -> C:\Users\thehe\OneDrive\BackGround\JusinAPI\jusin3(API)\MainSolusion\Defualt\Debug\Defualt.exe

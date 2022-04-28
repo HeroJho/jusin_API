@@ -5,11 +5,11 @@
 #include "CollisionMgr.h"
 #include "CShield.h"
 #include "Mouse.h"
+#include "ObjMgr.h"
 
 CMainGame::CMainGame()
 	: m_hDc(nullptr)
 	, m_dwTime(GetTickCount())
-	, m_rcWall{ 100, 100, WINCX - 100, WINCY - 100 }
 {
 	ZeroMemory(m_szFPS, sizeof(TCHAR) * 64);
 	m_iFPS = 0;
@@ -26,71 +26,46 @@ void CMainGame::Initialize(void)
 	// main에 있는 hWnd ID 값을 얻어온다
 	m_hDc = GetDC(g_hWnd);
 
-	// 추상 펙토리 패턴을 사용해서 Player 생성.
-	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
-	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_BulletList(&m_ObjList[OBJ_BULLET]);
-	dynamic_cast<CPlayer*>(m_ObjList[OBJ_PLAYER].front())->Set_ShieldList(&m_ObjList[OBJ_SHIELD]);
-
-	// 몬스터 생성
-	CObj* pMonster = CAbstractFactory<CMonster>::Create();
-	((CMonster*)pMonster)->SetTarget(m_ObjList[OBJ_PLAYER].front());
-	m_ObjList[OBJ_MONSTER].push_back(pMonster);
-
-	// 쉴드 생성
-	//CObj* obj = CAbstractFactory<CShield>::Create();
-	//((CShield*)obj)->SetOwner(m_ObjList[OBJ_PLAYER].front());
-	//m_ObjList[OBJ_BULLET].push_back(obj);
-
-	m_ObjList[OBJ_MOUSE].push_back(CAbstractFactory<CMouse>::Create());
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 }
 
 
 void CMainGame::Update(void)
 {
-
-	for (int i = 0; i < OBJ_END; ++i)
-	{
-		for (auto iter = m_ObjList[i].begin();
-			iter != m_ObjList[i].end(); )
-		{
-			int iResult = (*iter)->Update();
-
-			if (OBJ_DEAD == iResult)
-			{
-				Safe_Delete<CObj*>(*iter);
-				iter = m_ObjList[i].erase(iter);
-			}
-			else
-				++iter;
-		}
-	}
-
+	CObjMgr::Get_Instance()->Update();
 }
 
 void CMainGame::Late_Update(void)
 {
-	for (int i = 0; i < OBJ_END; ++i)
-	{
-		for (auto& iter : m_ObjList[i])
-			iter->Late_Update();
-	}
-
-	CollisionMgr::Collision_Rect(m_ObjList[OBJ_MONSTER], m_ObjList[OBJ_BULLET]);
+	CObjMgr::Get_Instance()->Late_Update();
 }
 
 void CMainGame::Render(void)
 {
+	//더블버퍼링 출처 : https://blog.naver.com/PostView.nhn?isHttpsRedirect=true&blogId=kyed203&logNo=20187732037&beginTime=0&jumpingVid=&from=section&redirect=Log&widgetTypeCall=true
+/** 더블버퍼링 시작처리입니다. **/
+	HDC MemDC, tmpDC;
+	HBITMAP BackBit, oldBackBit;
+	RECT bufferRT;
+
+	GetClientRect(g_hWnd, &bufferRT);
+	MemDC = CreateCompatibleDC(m_hDc);
+	BackBit = CreateCompatibleBitmap(m_hDc, bufferRT.right, bufferRT.bottom);
+	oldBackBit = (HBITMAP)SelectObject(MemDC, BackBit);
+	PatBlt(MemDC, 0, 0, bufferRT.right, bufferRT.bottom, WHITENESS);
+	tmpDC = m_hDc;
+	m_hDc = MemDC;
+	MemDC = tmpDC;
+
+	// TODO: 여기에 그리기 코드를 추가합니다.
 
 	// 큰 네모를 그려서 이전 프레임 그림을 덮어준다.
 	Rectangle(m_hDc, 0, 0, WINCX, WINCY);
-	Rectangle(m_hDc, m_rcWall.left, m_rcWall.top, m_rcWall.right, m_rcWall.bottom);
 
-	for (int i = 0; i < OBJ_END; ++i)
-	{
-		for (auto& iter : m_ObjList[i])
-			iter->Render(m_hDc);
-	}
+	CObjMgr::Get_Instance()->Render(m_hDc);
 
+
+#pragma region 폰트 출력
 
 	// 폰트 출력
 
@@ -110,6 +85,7 @@ void CMainGame::Render(void)
 	//swprintf_s(szBuff, L"Bullet : %f", 3.14f);
 	//TextOut(m_hDC, 50, 50, szBuff, lstrlen(szBuff));
 
+#pragma endregion
 
 	// FPS 출력
 	++m_iFPS;
@@ -123,17 +99,22 @@ void CMainGame::Render(void)
 		m_dwTime = GetTickCount();
 	}
 
+
+	/** 더블버퍼링 끝처리 입니다. **/
+	tmpDC = m_hDc;
+	m_hDc = MemDC;
+	MemDC = tmpDC;
+	GetClientRect(g_hWnd, &bufferRT);
+	BitBlt(m_hDc, 0, 0, bufferRT.right, bufferRT.bottom, MemDC, 0, 0, SRCCOPY);
+	SelectObject(MemDC, oldBackBit);
+	DeleteObject(BackBit);
+	DeleteDC(MemDC);
+
 }
 
 void CMainGame::Release(void)
 {
-	for (int i = 0; i < OBJ_END; ++i)
-	{
-		for (auto& iter : m_ObjList[i])
-			Safe_Delete<CObj*>(iter);
-
-		m_ObjList[i].clear();
-	}
+	CObjMgr::Get_Instance()->Destroy_Instance();
 
 	ReleaseDC(g_hWnd, m_hDc);
 }
