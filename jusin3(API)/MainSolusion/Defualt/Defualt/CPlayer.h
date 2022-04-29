@@ -10,12 +10,6 @@ public:
 	CPlayer();
 	virtual ~CPlayer();
 
-public:
-	void	Set_BulletList(list<CObj*>* pBullet)
-	{
-		m_pBullet = pBullet;
-	}
-	void	Set_ShieldList(list<CObj*>* pShield) { m_pShield = pShield; }
 
 public:
 	virtual void	Initialize(void)	override;
@@ -24,24 +18,17 @@ public:
 	virtual void	Render(HDC hDC)		override;
 	virtual void	Release(void)		override;
 
+
 private:
 	void		Key_Input(void);
 
-	CObj* Create_Shield(void);
-
-	template<typename T>
-	CObj*       Create_Bullet(void);
+public:
+	virtual void OnCollision();
+	virtual	void	OnCollision(DIRECTION eDir);
 
 private:
-	typedef list<CObj*>		BULLETLIST;
-	BULLETLIST* m_pBullet;
-	float m_Theta;
+	bool					m_bJump;		// 점프 상태 확인
+	float					m_fJumpPower;	// 점프 힘
 
-	list<CObj*>* m_pShield;
-
-	POINT					m_tPosin;
-	float					m_fDiagonal;
-	float					m_velX;
-	float					m_velY;
 };
 

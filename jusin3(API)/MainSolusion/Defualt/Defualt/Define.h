@@ -12,6 +12,8 @@
 #define			OBJ_NOEVENT	0
 #define			OBJ_DEAD	1
 
+#define			VK_MAX		 0xff
+
 extern		HWND	g_hWnd;
 
 

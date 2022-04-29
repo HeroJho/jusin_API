@@ -39,6 +39,10 @@ public:
 	void			Update_Rect(void);
 
 	virtual	void	OnCollision() {};
+	virtual	void	OnCollision(DIRECTION eDir) {};
+
+public:
+	virtual void	UpdateGravity();
 
 protected:
 	INFO		m_tInfo;
@@ -51,5 +55,10 @@ protected:
 	bool		m_bDead;
 
 	CObj* m_pTarget;
+
+protected:
+	float					m_fGTime;	// 점프 중 진행 시간
+	bool					m_bOnAir;
+	bool					m_bOnBlock;
 };
 

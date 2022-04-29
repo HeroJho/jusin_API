@@ -52,6 +52,15 @@
     <Filter Include="98. Design\ObjMgr">
       <UniqueIdentifier>{02445d4f-edc0-4196-8b0c-77859ca97c98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. Design\LineMgr">
+      <UniqueIdentifier>{95c9920e-6b0b-4d59-bd01-8f82caa99e9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\LineMgr\Line">
+      <UniqueIdentifier>{4c587e1b-1071-4758-9e73-ebf3a21adb0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\KeyMgr">
+      <UniqueIdentifier>{714c1242-d6cf-42ff-b9f4-ff37e5fac446}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -120,6 +129,15 @@
     <ClInclude Include="ObjMgr.h">
       <Filter>98. Design\ObjMgr</Filter>
     </ClInclude>
+    <ClInclude Include="LineMgr.h">
+      <Filter>98. Design\LineMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Line.h">
+      <Filter>98. Design\LineMgr\Line</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyMgr.h">
+      <Filter>98. Design\KeyMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Defualt.cpp">
@@ -160,6 +178,15 @@
     </ClCompile>
     <ClCompile Include="ObjMgr.cpp">
       <Filter>98. Design\ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMgr.cpp">
+      <Filter>98. Design\LineMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>98. Design\LineMgr\Line</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyMgr.cpp">
+      <Filter>98. Design\KeyMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

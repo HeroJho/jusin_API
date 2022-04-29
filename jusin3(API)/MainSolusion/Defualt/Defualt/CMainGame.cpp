@@ -27,6 +27,12 @@ void CMainGame::Initialize(void)
 	m_hDc = GetDC(g_hWnd);
 
 	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
+
+	for (int i = 0; i < 100; ++i)
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(16 * i, 400.f, 0.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(128 + 16 * i, 300.f, 0.f));
+	}
 }
 
 
@@ -63,29 +69,6 @@ void CMainGame::Render(void)
 	Rectangle(m_hDc, 0, 0, WINCX, WINCY);
 
 	CObjMgr::Get_Instance()->Render(m_hDc);
-
-
-#pragma region 폰트 출력
-
-	// 폰트 출력
-
-	//lstrcpy(m_szFPS, L"Hello");
-	//TextOut(m_hDC, 50, 50, m_szFPS, lstrlen(m_szFPS));
-	// 1. dc 2, 3. 출력할 윈도우 left, top 좌표, 4. 출력할 문자열 5. 문자열 버퍼 크기
-
-	//RECT rc{ 0, 0, 50, 50 };
-	//DrawText(m_hDC, m_szFPS, lstrlen(m_szFPS), &rc, DT_RIGHT);
-	// 1. dc 2. 출력할 문자열 3. 문자열 버퍼 크기 4. 출력할 렉트 주소, 5. 출력 옵션
-
-	//TCHAR	szBuff[32] = L"";
-	// 소수점 자리 출력이 불가능하다. winapi 라이브러리에서 제공하는 함수
-	//wsprintf(szBuff, L"Bullet : %d", m_ObjList[OBJ_BULLET].size());
-
-	// visual c++ 라이브러리에서 제공(모든 서식 문자를 지원)
-	//swprintf_s(szBuff, L"Bullet : %f", 3.14f);
-	//TextOut(m_hDC, 50, 50, szBuff, lstrlen(szBuff));
-
-#pragma endregion
 
 	// FPS 출력
 	++m_iFPS;

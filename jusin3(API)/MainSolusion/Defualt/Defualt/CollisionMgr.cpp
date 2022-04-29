@@ -38,30 +38,44 @@ void CollisionMgr::Collision_RectEx(list<CObj*> _Dest, list<CObj*> _Sour)
 
 			if (Check_Rect(Dest, Sour, &fX, &fY))
 			{
-				/*	Dest->Set_Dead();
-					Sour->Set_Dead();*/
-
 					// 상하 충돌
 				if (fX > fY)
 				{
 					// 상 충돌
 					if (Dest->Get_Info().fY > Sour->Get_Info().fY)
+					{
 						Sour->Set_PosY(-fY);
+						Dest->OnCollision(DIR_UP);
+						Sour->OnCollision(DIR_UP);
+					}
 
 					else // 하 충돌
+					{
 						Sour->Set_PosY(fY);
-
+						Dest->OnCollision(DIR_DOWN);
+						Sour->OnCollision(DIR_DOWN);
+ 	        		}
 				}
 				// 좌우 충돌
 				else
 				{
 					// 좌 충돌
 					if (Dest->Get_Info().fX > Sour->Get_Info().fX)
+					{
 						Sour->Set_PosX(-fX);
+						Dest->OnCollision(DIR_LEFT);
+						Sour->OnCollision(DIR_LEFT);
+					}
+
 
 					// 우 충돌
 					else
+					{
 						Sour->Set_PosX(fX);
+						Dest->OnCollision(DIR_RIGHT);
+						Sour->OnCollision(DIR_RIGHT);
+					}
+
 				}
 
 			}
