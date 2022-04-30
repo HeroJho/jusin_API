@@ -1,7 +1,6 @@
 #pragma once
 
 #include "CObj.h"
-#include "CBullet.h"
 
 class CPlayer :
     public CObj
@@ -23,7 +22,7 @@ private:
 	void		Key_Input(void);
 
 public:
-	virtual void OnCollision();
+	virtual void    OnCollision();
 	virtual	void	OnCollision(DIRECTION eDir);
 
 private:

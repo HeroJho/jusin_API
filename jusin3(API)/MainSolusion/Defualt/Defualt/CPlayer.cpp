@@ -1,12 +1,8 @@
 #include "pch.h"
 #include "CPlayer.h"
 #include "CAbstractFactory.h"
-
-#include "CShield.h"
-#include "CScrewBullet.h"
 #include "KeyMgr.h"
 #include "ObjMgr.h"
-#include "LineMgr.h"
 
 CPlayer::CPlayer()
 {
@@ -23,9 +19,9 @@ void CPlayer::Initialize(void)
 	m_tInfo.fY = 0.f;
 
 	m_tInfo.fCX = 16.f;
-	m_tInfo.fCY = 16.f;
+	m_tInfo.fCY = 32.f;
 
-	m_fSpeed = 5.f;
+	m_fSpeed = 3.f;
 	
 	m_bJump = false;
 	m_fJumpPower = 10.f;
@@ -96,5 +92,7 @@ void CPlayer::OnCollision(DIRECTION eDir)
 	else if(DIR_DOWN == eDir)
 	{
 		m_fJumpPower = 0.f;
+		m_fGTime = 0.f;
+		m_fVel_Y = 0.f;
 	}
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "CObj.h"
 
-
 class CMonster :
     public CObj
 {
@@ -23,9 +22,6 @@ public:
 
 public:
 	virtual void OnCollision();
-
-private:
-	CObj* m_pTarget;
 
 };
 

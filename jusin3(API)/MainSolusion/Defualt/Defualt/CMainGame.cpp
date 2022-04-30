@@ -30,8 +30,13 @@ void CMainGame::Initialize(void)
 
 	for (int i = 0; i < 100; ++i)
 	{
-		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(16 * i, 400.f, 0.f));
-		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(128 + 16 * i, 300.f, 0.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(32 * i, 400.f, 0.f));
+		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(128 + 32 * i, 300.f, 0.f));
+	}
+
+	for (int i = 0; i < 100; ++i)
+	{
+		CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create(500, 32 * i, 0.f));
 	}
 }
 

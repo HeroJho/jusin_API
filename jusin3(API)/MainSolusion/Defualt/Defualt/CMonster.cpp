@@ -3,7 +3,6 @@
 
 
 CMonster::CMonster()
-	: m_pTarget(nullptr)
 {
 }
 
@@ -17,8 +16,8 @@ void CMonster::Initialize(void)
 	m_tInfo.fX = 600.f;		// 중점 X
 	m_tInfo.fY = 300.f;		// 중점 Y
 
-	m_tInfo.fCX = 16.f;
-	m_tInfo.fCY = 16.f;
+	m_tInfo.fCX = 32.f;
+	m_tInfo.fCY = 32.f;
 
 	m_fSpeed = 1.f;
 

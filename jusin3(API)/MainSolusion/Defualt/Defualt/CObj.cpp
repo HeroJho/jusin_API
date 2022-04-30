@@ -8,6 +8,7 @@ CObj::CObj()
 	, m_bOnBlock(false)
 	, m_bOnAir(true)
 	, m_fGTime(0.f)
+	, m_fVel_Y(0.f)
 
 {
 	ZeroMemory(&m_tInfo, sizeof(INFO));
@@ -43,13 +44,19 @@ void CObj::UpdateGravity()
 	// 공중이면 중력을 준다.
 	if (m_bOnAir)
 	{
-		m_tInfo.fY -= -9.8f * m_fGTime * 0.5f;
+		//m_tInfo.fY -= -9.8f * m_fGTime * 0.5f;
+		//m_fGTime += 0.1f;
+
+		m_fVel_Y = 9.8f * m_fGTime * 0.5f;
 		m_fGTime += 0.1f;
 	}
 	else
 	{
+		m_fVel_Y = 0.f;
 		m_fGTime = 0.f;
 	}
+
+	m_tInfo.fY += m_fVel_Y;
 
 	m_bOnBlock = false;
 }

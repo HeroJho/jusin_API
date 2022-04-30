@@ -60,5 +60,6 @@ protected:
 	float					m_fGTime;	// 점프 중 진행 시간
 	bool					m_bOnAir;
 	bool					m_bOnBlock;
+	float					m_fVel_Y;
 };
 
