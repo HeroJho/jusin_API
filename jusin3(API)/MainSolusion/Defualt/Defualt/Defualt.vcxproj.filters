@@ -61,6 +61,21 @@
     <Filter Include="98. Design\KeyMgr">
       <UniqueIdentifier>{714c1242-d6cf-42ff-b9f4-ff37e5fac446}</UniqueIdentifier>
     </Filter>
+    <Filter Include="98. Design\BmpMgr">
+      <UniqueIdentifier>{473df03b-f88f-404b-b4f9-56069b3936e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\BmpMgr\MyBmp">
+      <UniqueIdentifier>{3af09918-8cd2-4297-b3ec-a64d85c40c71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene">
+      <UniqueIdentifier>{34957ec8-f811-4422-af9b-57be9f5d8a3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Scene\00. Logo">
+      <UniqueIdentifier>{f555db9d-58af-4f09-b530-f1400ec05da9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="98. Design\SceneMgr">
+      <UniqueIdentifier>{9c2ae2e6-fdc0-4596-ac16-d6b8e72cde6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -138,6 +153,21 @@
     <ClInclude Include="KeyMgr.h">
       <Filter>98. Design\KeyMgr</Filter>
     </ClInclude>
+    <ClInclude Include="MyBmp.h">
+      <Filter>98. Design\BmpMgr\MyBmp</Filter>
+    </ClInclude>
+    <ClInclude Include="BmpMgr.h">
+      <Filter>98. Design\BmpMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>02. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo.h">
+      <Filter>02. Scene\00. Logo</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>98. Design\SceneMgr</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Defualt.cpp">
@@ -187,6 +217,21 @@
     </ClCompile>
     <ClCompile Include="KeyMgr.cpp">
       <Filter>98. Design\KeyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="MyBmp.cpp">
+      <Filter>98. Design\BmpMgr\MyBmp</Filter>
+    </ClCompile>
+    <ClCompile Include="BmpMgr.cpp">
+      <Filter>98. Design\BmpMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>02. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo.cpp">
+      <Filter>02. Scene\00. Logo</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>98. Design\SceneMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
