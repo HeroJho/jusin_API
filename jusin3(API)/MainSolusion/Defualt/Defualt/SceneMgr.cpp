@@ -11,6 +11,7 @@ CSceneMgr::CSceneMgr()
 CSceneMgr::~CSceneMgr()
 {
 	Release();
+
 }
 
 // FSM(finite state machine) : 유한 상태 기계, 자신이 취할 수 있는 유한한 개수의 상태
